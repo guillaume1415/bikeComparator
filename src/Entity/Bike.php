@@ -51,6 +51,11 @@ class Bike
      */
     private $exist;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $img;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +141,18 @@ class Bike
     public function setExist(int $exist): self
     {
         $this->exist = $exist;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(?string $img): self
+    {
+        $this->img = $img;
 
         return $this;
     }

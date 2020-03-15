@@ -9,9 +9,8 @@
             <h4 class="text-center  mt-2">Filtre</h4>
             <hr>
 
-
-
             <div class="jumbotron">
+                <!-- filtre -->
                 <div class="container">
                     {{ form_start(form) }}
                     <div class="form-row align-items-end ">
@@ -21,8 +20,6 @@
                             {{ form_row(form.MinPrice) }}
 
                             {{ form_row(form.Mark) }}
-
-
 
                             <div class="form-group">
                                 <button class="btn btn-primary">Recherche</button>
@@ -82,7 +79,10 @@
 
                 </div>
                 <!-- bare de navigation de vue -->
+            <div class="container mt-4">
+                <h1>Voir tous nos biens</h1>
 
+                <div class="row">
                 {% for property in properties %}
                     <div class="col-md-4">
                         {% include('comparator/_property.html.twig') %}
@@ -90,13 +90,14 @@
 
                 {% endfor %}
 
-
-                <div class="pagination">
-                    {{ knp_pagination_render(properties) }}
+                    <div class="pagination">
+                        {{ knp_pagination_render(properties) }}
+                    </div>
                 </div>
-
+            </div>
 
         </div>
+    </div>
     </div>
 
 {% endblock %}
