@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-4">{{ form_row(form.title) }}</div>
+    <div class="col-md-4">{{ form_row(form.frame_size) }}</div>
+    <div class="col-md-4">{{ form_row(form.price) }}</div>
+</div>
+<div class="row">
+    <div class="col-md-2">{{ form_row(form.frame_material) }}</div>
+    <div class="col-md-2">{{ form_row(form.fork_material) }}</div>
+    <div class="col-md-2">{{ form_row(form.mark) }}</div>
+
+</div>
+
+{{ form_rest(form) }}
+<button class="btn btn-primary">{{ button| default('Enregister')    }}</button>
+{{ form_end(form) }}

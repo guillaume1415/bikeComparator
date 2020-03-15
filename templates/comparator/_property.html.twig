@@ -1,0 +1,16 @@
+<div class="card mb-4">
+
+    <div class="card-body">
+
+        <h5 class="card-title">
+            <a>
+                {{ property.title }}
+            </a>
+        </h5>
+        <p class="card-text">{{ property.price  | nl2br }}</p>
+        {{ property.mark }}
+        <div class="text-primary" style="font-size: 2rem; font-weight: bold;">
+            {{ property.price  }} €
+        </div>
+    </div>
+</div>

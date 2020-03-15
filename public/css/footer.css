@@ -1,0 +1,14 @@
+/* footer */
+
+.bem-footer_content-container {
+    background-color: #666;
+    color: #f1f1f1;
+}
+
+.bem-footer_content-container a {
+    color: #f1f1f1;
+}
+
+.bem-footer_content-container a:hover {
+    color: #000000;
+}

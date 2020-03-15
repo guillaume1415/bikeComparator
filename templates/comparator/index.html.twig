@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Comparateur{% endblock %}
+
+{% block body %}
+    <div class="row body__content-container">
+        <!-- MENU_LEFT -->
+        <div class=" col-xl-2 col-md-3 col-sm-4 bg-white border-right">
+            <h4 class="text-center  mt-2">Filtre</h4>
+            <hr>
+
+
+
+            <div class="jumbotron">
+                <div class="container">
+                    {{ form_start(form) }}
+                    <div class="form-row align-items-end ">
+                        <div class="col">
+                            {{ form_row(form.MaxPrice) }}
+
+                            {{ form_row(form.MinPrice) }}
+
+                            {{ form_row(form.Mark) }}
+
+
+
+                            <div class="form-group">
+                                <button class="btn btn-primary">Recherche</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        <!-- MENU_LEFT END-->
+        <div class=" col-xl-10 col-md-9 col-sm-8  mb-5 ">
+
+            <h5 class="text-center titelMenuOption my-5">The world largest bike comparison site</h5>
+
+            <!--nav option -->
+            <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+                <!-- bare de navigation de vue -->
+                <div class="row cbp-vm-options mx-0 border">
+                    <div class="form-group col-2 my-0 px-1 offset-8">
+                        <select id="" class="form-control select-sorting p-0" name="">
+                            <option value="">
+                                Meilleures ventes
+                            </option>
+                            <option value="">
+                                Prix : ordre croissant
+                            </option>
+                            <option value="">
+                                Prix : ordre décroissant
+                            </option>
+                            <option value="">
+                                Ajouté récemment
+                            </option>
+                            <option value="">
+                                Remise
+                            </option>
+                            <option value="">
+                                Marque
+                            </option>
+                            <option value="">
+                                Évaluations des clients
+                            </option>
+                            <option value="">
+                                Produits : A à Z
+                            </option>
+                            <option value="">
+                                Produits : Z à A
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-2 text-right cbp-vm-options">
+                        <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected"
+                           data-view="cbp-vm-view-grid">Grid View</a>
+                        <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
+                    </div>
+
+                </div>
+                <!-- bare de navigation de vue -->
+
+                {% for property in properties %}
+                    <div class="col-md-4">
+                        {% include('comparator/_property.html.twig') %}
+                    </div>
+
+                {% endfor %}
+
+
+                <div class="pagination">
+                    {{ knp_pagination_render(properties) }}
+                </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
