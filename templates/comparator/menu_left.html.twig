@@ -1,0 +1,173 @@
+<!-- MENU_LEFT -->
+<form action="">
+    <button class="btn btn-dark btn-block rot" type="button">
+        Réinitialiser <i class="fas fa-sync rotate"></i>
+    </button>
+    <button class="btn btn-dark btn-block" type="button">Appliquer</button>
+    <!-- btn action -->
+
+    <div class="form-group">
+        <hr class="mb-2">
+        <!-- heading price -->
+        <div class="row price ">
+            <label class="col-10 text-left cursor" for="price">Gamme de prix</label>
+            <i class="fa fa-minus" style="color: black"></i>
+        </div>
+        <hr class="mt-1">
+        <div class="input-price mx-3">
+            <!-- price mine -->
+            <label for="name">De :</label>
+            <div class="input-group">
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                </div>
+            </div>
+            <!-- price max -->
+            <label for="name">à :</label>
+            <div class="input-group">
+                <input type="text" class="form-control" value="2220"
+                       aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row size">
+        <label class="col-10 text-left cursor" for="price">Taille du cadre</label>
+        <i class="fa fa-minus" style="color: black"></i>
+    </div>
+    <hr class="mt-1">
+    <div class="form-group input-size mx-3">
+        <select class="form-control" id="exampleFormControlSelect1">
+            <option value="tous">tous</option>
+            <option value="51">51</option>
+            <option value="52">52</option>
+            <option value="53">53</option>
+            <option value="54">54</option>
+            <option value="55">55</option>
+            <option value="56">56</option>
+            <option value="57">57</option>
+            <option value="58">58</option>
+            <option value="59">59</option>
+            <option value="60">60</option>
+            <option value="61">61</option>
+            <option value="62">62</option>
+            <option value="XS">XS</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+        </select>
+    </div>
+
+    <div class="row material-frame">
+        <label class="col-10 text-left cursor" for="price">Matériau du cadre</label>
+        <i class="fa fa-minus" style="color: black"></i>
+    </div>
+    <hr class="mt-1">
+    <div class="form-group input-material-frame">
+        <!-- <label for="exampleFormControlSelect1">Matériau du cadre</label>-->
+        <div class="form-check">
+            <div class="custom-control custom-checkbox">
+                <input id="aluminium" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="aluminium" class="custom-control-label">Aluminium</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="Carbone" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="Carbone" class="custom-control-label">Carbone</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="Acier" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="Acier" class="custom-control-label">Acier</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="Titane" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="Titane" class="custom-control-label">Titane</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="bois" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="bois" class="custom-control-label">Bois</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row material-fork">
+        <label class="col-10 text-left cursor" for="price">Matériau de la fourche</label>
+        <i class="fa fa-minus" style="color: black"></i>
+    </div>
+    <hr class="mt-1">
+    <div class="form-group input-material-fork">
+        <!-- <label for="exampleFormControlSelect1">Matériau du cadre</label>-->
+        <div class="form-check">
+            <div class="custom-control custom-checkbox">
+                <input id="fork-aluminium" class="custom-control-input" type="checkbox" name=""
+                       value="true">
+                <label for="fork-aluminium" class="custom-control-label">Aluminium</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="fork-Carbone" class="custom-control-input" type="checkbox" name=""
+                       value="true">
+                <label for="fork-Carbone" class="custom-control-label">Carbone</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="fork-Acier" class="custom-control-input" type="checkbox" name=""
+                       value="true">
+                <label for="fork-Acier" class="custom-control-label">Acier</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="fork-Titane" class="custom-control-input" type="checkbox" name=""
+                       value="true">
+                <label for="fork-Titane" class="custom-control-label">Titane</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row marque">
+        <label class="col-10 text-left cursor" for="price">Marque</label>
+        <i class="fa fa-minus" style="color: black"></i>
+    </div>
+    <hr class="mt-1">
+    <div class="form-group input-marque">
+        <!-- <label for="exampleFormControlSelect1">Matériau du cadre</label>-->
+        <div class="form-check">
+            <div class="custom-control custom-checkbox">
+                <input id="Bianchi" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="Bianchi" class="custom-control-label">Bianchi</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="Specialized" class="custom-control-input" type="checkbox" name=""
+                       value="true">
+                <label for="Specialized" class="custom-control-label">Specialized</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="GT" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="GT" class="custom-control-label">GT</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="Rose" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="Rose" class="custom-control-label">Rose</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="factor" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="factor" class="custom-control-label">Factor</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="boradman" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="boradman" class="custom-control-label">Boradman</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="bh" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="bh" class="custom-control-label">BH</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="Trek" class="custom-control-input" type="checkbox" name="" value="true">
+                <label for="Trek" class="custom-control-label">Trek</label>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- MENU_LEFT END-->

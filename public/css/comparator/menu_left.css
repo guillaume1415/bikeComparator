@@ -1,0 +1,12 @@
+.cursor {
+    cursor: pointer;
+}
+
+
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+label.custom-control-label {
+    margin-top: 0.15rem;
+}
