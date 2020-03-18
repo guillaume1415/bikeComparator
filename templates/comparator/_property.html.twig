@@ -1,20 +1,16 @@
-<div class="card mb-4">
 
-    <div class="card-body">
+<ul>
+    {% for property in properties %}
+        <li class="border card">
+            <a class="cbp-vm-image card-img-top " href="#"><img src="{{ asset('img/Ross.jpg') }}" alt=""></a>
 
-        <h5 class="card-title">
-            <a>
-                {{ property.title }}
-            </a>
-        </h5>
-        <p class="card-text"></p>
-
-
-        <img src="{{ property.img }}" width="100%" height="100%">
-        <br>
-        {{ property.mark }}
-        <div class="text-primary" style="font-size: 2rem; font-weight: bold;">
-            {{ property.price  }} €
-        </div>
-    </div>
-</div>
+            <a class="cbp-vm-title card-title" href="">{{ property.title }}</a>
+            <div class="cbp-vm-details card-text ">
+                Silver beet shallot wakame tomatillo salsify mung bean beetroot groundnut. <br>
+                <small class="text-muted">★ ★ ★ ★ ☆</small>
+            </div>
+            <div class="cbp-vm-price">{{ property.price }} €</div>
+            <a class="cbp-vm-icon cbp-vm-add" href="#">Add to Favorite</a>
+        </li>
+    {% endfor %}
+</ul>

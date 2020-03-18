@@ -31,6 +31,21 @@ class BikeSearch
      */
     private $Mark;
 
+    /**
+     * @ORM\Column(type="string", length=8)
+     */
+    private $FrameSize;
+
+    /**
+     * @ORM\Column(type="string", length=16)
+     */
+    private $frameMaterial;
+
+    /**
+     * @ORM\Column(type="string", length=16)
+     */
+    private $ForkMaterial;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +83,42 @@ class BikeSearch
     public function setMark(string $Mark): self
     {
         $this->Mark = $Mark;
+
+        return $this;
+    }
+
+    public function getFrameSize(): ?string
+    {
+        return $this->FrameSize;
+    }
+
+    public function setFrameSize(string $FrameSize): self
+    {
+        $this->FrameSize = $FrameSize;
+
+        return $this;
+    }
+
+    public function getFrameMaterial(): ?string
+    {
+        return $this->frameMaterial;
+    }
+
+    public function setFrameMaterial(string $frameMaterial): self
+    {
+        $this->frameMaterial = $frameMaterial;
+
+        return $this;
+    }
+
+    public function getForkMaterial(): ?string
+    {
+        return $this->ForkMaterial;
+    }
+
+    public function setForkMaterial(string $ForkMaterial): self
+    {
+        $this->ForkMaterial = $ForkMaterial;
 
         return $this;
     }
