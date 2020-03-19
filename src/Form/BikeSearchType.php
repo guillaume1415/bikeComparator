@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\BikeSearch;
+use App\Entity\Marks;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -29,13 +31,17 @@ class BikeSearchType extends AbstractType
                     'No' => false,
                     ],
             ])
-            ->add('FrameSize',CheckboxType::class, [
-                'label'    => 'Conlogo',
-                'label'    => 'Specialized',
-                'required' => false,
-            ])
+
             ->add('frameMaterial')
             ->add('ForkMaterial')
+
+            ->add('mark', EntityType::class,[
+                'class' => marks::class,
+                'choice_label'=> 'name',
+                'multiple' => true,
+                'required' => false,
+                'label' => false,
+            ])
         ;
     }
 

@@ -36,10 +36,7 @@ class Bike
      */
     private $fork_material;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $mark;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -55,6 +52,13 @@ class Bike
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $img;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Marks", inversedBy="bikes")
+     */
+    private $mark;
+
+
 
     public function getId(): ?int
     {
@@ -109,17 +113,7 @@ class Bike
         return $this;
     }
 
-    public function getMark(): ?string
-    {
-        return $this->mark;
-    }
 
-    public function setMark(?string $mark): self
-    {
-        $this->mark = $mark;
-
-        return $this;
-    }
 
     public function getTitle(): ?string
     {
@@ -156,4 +150,18 @@ class Bike
 
         return $this;
     }
+
+    public function getMark(): ?Marks
+    {
+        return $this->mark;
+    }
+
+    public function setMark(?Marks $mark): self
+    {
+        $this->mark = $mark;
+
+        return $this;
+    }
+
+
 }
