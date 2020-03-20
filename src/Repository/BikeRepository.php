@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Bike;
+use App\Entity\Marks;
 use App\Entity\BikeSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -26,7 +27,11 @@ class BikeRepository extends ServiceEntityRepository
     public function findAllVisibleQuery(BikeSearch $search):Query {
 
 
-          $query = $this->findVisibleQuery();
+          $query = $this
+              ->findVisibleQuery()
+             // ->select('m','p')
+              //->join('p.mark', 'm')
+             ;
 
             if($search->getMaxPrice()){
             $query = $query
@@ -38,11 +43,16 @@ class BikeRepository extends ServiceEntityRepository
                 ->andWhere('p.price >= :minprice')
                 ->setParameter('minprice',$search->getMinPrice());
         }
-        if($search->getMark()){
+
+
+        /*if(!empty($search->getMarks()) ){
             $query = $query
-                ->andWhere('p.mark = :mark')
-                ->setParameter('mark',$search->getMark());
-        }
+
+                ->andWhere('m.id IN (:Marks')
+                ->setParameter('Marks',$search->getMarks())
+            ;
+        }*/
+
 
         return $query->getQuery();
     }
@@ -50,7 +60,8 @@ class BikeRepository extends ServiceEntityRepository
     public function findVisibleQuery():QueryBuilder
     {
         return $this->createQueryBuilder('p')
-            ->where('p.exist = 1');
+
+            ->where('p.exist = 1')            ;
 
     }
 

@@ -4,10 +4,22 @@
 
 {% block body %}
     <div class="container-fluid">
+        <div class="mt-5">
+            <div class="pagination justify-content-center">
+                {{ knp_pagination_sortable(properties,'price','p.price') }}
+            </div>
+        </div>
+
         <div class="row body__content-container">
             <!-- MENU_LEFT -->
             <div class="col-xl-2 col-md-3 col-sm-4 bg-white border-right pt-3">
-                {{ include('comparator/menu_left.html.twig') }}
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_widget(form) }}
+                    <button class="btn btn-primary">Recherche</button>
+                </div>
+                {{ form_end(form) }}
+
             </div>
             <!-- MENU_LEFT END-->
 
@@ -22,7 +34,7 @@
                     <!-- BLOCK ARTICLE -->
                     {% include('comparator/_property.html.twig') %}
                     <!-- BLOCK ARTICLE  -->
-                </div>
+
                 <div class="mt-5">
                     <div class="pagination justify-content-center">
                         {{ knp_pagination_render(properties) }}
@@ -34,4 +46,5 @@
             <!-- BODY_ARTICLE END -->
         </div>
     </div>
+
 {% endblock %}

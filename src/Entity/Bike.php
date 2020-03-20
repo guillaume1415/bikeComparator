@@ -59,7 +59,6 @@ class Bike
     private $mark;
 
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -162,6 +161,12 @@ class Bike
 
         return $this;
     }
+
+
+
+
+
+
 
 
 }

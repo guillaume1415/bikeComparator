@@ -33,6 +33,13 @@ class Marks
         $this->bikes = new ArrayCollection();
     }
 
+
+
+
+
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,6 +55,16 @@ class Marks
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Bike[]
+     */
+
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     /**
@@ -80,4 +97,11 @@ class Marks
 
         return $this;
     }
+
+
+
+
+
+
+
 }

@@ -18,11 +18,7 @@ class BikeType extends AbstractType
             ->add('frame_size')
             ->add('frame_material')
             ->add('fork_material')
-            ->add('options', EntityType::class,[
-                'class' => marks::class,
-                'choice_label'=> 'name',
-                'multiple' => true
-            ])
+            ->add('mark')
             ->add('title')
             ->add('exist')
         ;
@@ -34,4 +30,5 @@ class BikeType extends AbstractType
             'data_class' => Bike::class,
         ]);
     }
+
 }

@@ -11,6 +11,7 @@ class BikeFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+
         $faker = Factory::create('fr_FR');
         for ($i = 0; $i < 100; $i ++ ){
             $property = new bike();
@@ -19,6 +20,7 @@ class BikeFixtures extends Fixture
                 ->setFrameSize($faker->numberBetween(50,62))
                 ->setForkMaterial('carbon')
                 ->setFrameMaterial('carbon')
+
 
                 ->setImg('https://images.internetstores.de/products//1053563/02/f44391/Cannondale_SystemSix_Carbon_Ultegra_cashmere[600x600].jpg?forceSize=true&forceAspectRatio=true&forceAlign=center')
                 ->setExist('1');

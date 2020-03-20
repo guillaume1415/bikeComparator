@@ -8,7 +8,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,24 +26,38 @@ class BikeSearchType extends AbstractType
             ->add('MinPrice',MoneyType::class, [
                 'required'   => false,
             ])
-            ->add('Mark', ChoiceType::class, [
+            ->add('FrameSize', ChoiceType::class, [
                 'choices'  => [
-                    'Maybe' => null,
-                    'Yes' => true,
-                    'No' => false,
+                    'tout' => null,
+                    '50' => null,
+                    '52' => true,
+                    '54' => false,
+                    '56' => false,
+                    '58' => false,
+                    '60' => false,
+                    '62' => false,
+                    'S' => false,
+                    'M' => false,
+                    'L' => false,
+                    'XL' => false,
+                    'XXL' => false,
                     ],
             ])
 
             ->add('frameMaterial')
             ->add('ForkMaterial')
-
-            ->add('mark', EntityType::class,[
+            ->add('Marks', EntityType::class,[
+                'label' => false,
+                'required' => false,
                 'class' => marks::class,
                 'choice_label'=> 'name',
+                'expanded' => true,
                 'multiple' => true,
-                'required' => false,
-                'label' => false,
+
+
             ])
+
+
         ;
     }
 

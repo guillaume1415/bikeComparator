@@ -2,11 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\BikeSearchRepository")
- */
+
 class BikeSearch
 {
     /**
@@ -26,10 +25,6 @@ class BikeSearch
      */
     private $MinPrice;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Mark;
 
     /**
      * @ORM\Column(type="string", length=8)
@@ -45,6 +40,18 @@ class BikeSearch
      * @ORM\Column(type="string", length=16)
      */
     private $ForkMaterial;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $Marks;
+
+    public function __construct()
+    {
+        $this->Marks = new ArrayCollection();
+    }
+
+
 
     public function getId(): ?int
     {
@@ -75,17 +82,7 @@ class BikeSearch
         return $this;
     }
 
-    public function getMark(): ?string
-    {
-        return $this->Mark;
-    }
 
-    public function setMark(string $Mark): self
-    {
-        $this->Mark = $Mark;
-
-        return $this;
-    }
 
     public function getFrameSize(): ?string
     {
@@ -120,6 +117,24 @@ class BikeSearch
     {
         $this->ForkMaterial = $ForkMaterial;
 
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMarks(): ArrayCollection
+    {
+        return $this->Marks;
+    }
+
+    /**
+     * @param ArrayCollection $Marks
+     * @return BikeSearch
+     */
+    public function setMarks(ArrayCollection $Marks): BikeSearch
+    {
+        $this->Marks = $Marks;
         return $this;
     }
 }
