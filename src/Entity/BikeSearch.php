@@ -44,11 +44,11 @@ class BikeSearch
     /**
      * @var ArrayCollection
      */
-    private $Marks;
+    private $Marke;
 
     public function __construct()
     {
-        $this->Marks = new ArrayCollection();
+        $this->Marke = new ArrayCollection();
     }
 
 
@@ -123,18 +123,18 @@ class BikeSearch
     /**
      * @return ArrayCollection
      */
-    public function getMarks(): ArrayCollection
+    public function getMarke(): ArrayCollection
     {
-        return $this->Marks;
+        return $this->Marke;
     }
 
     /**
-     * @param ArrayCollection $Marks
+     * @param ArrayCollection $Marke
      * @return BikeSearch
      */
-    public function setMarks(ArrayCollection $Marks): BikeSearch
+    public function setMarke(ArrayCollection $Marke): BikeSearch
     {
-        $this->Marks = $Marks;
+        $this->Marke = $Marke;
         return $this;
     }
 }

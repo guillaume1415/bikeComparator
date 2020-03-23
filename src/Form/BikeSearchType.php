@@ -46,7 +46,7 @@ class BikeSearchType extends AbstractType
 
             ->add('frameMaterial')
             ->add('ForkMaterial')
-            ->add('Marks', EntityType::class,[
+            ->add('Marke', EntityType::class,[
                 'label' => false,
                 'required' => false,
                 'class' => marks::class,
