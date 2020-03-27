@@ -8,7 +8,7 @@ use App\Entity\BikeSearch;
 use App\Form\BikeSearchType;
 
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\BikeRepository;
+use App\Repository\TestbikeRepository;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +28,7 @@ class ComparatorController extends AbstractController
      */
     private $manager;
 
-    public function __construct(BikeRepository $repository, EntityManagerInterface $manager)
+    public function __construct(TestbikeRepository $repository, EntityManagerInterface $manager)
     {
         $this->repository = $repository;
         $this->manager = $manager;
@@ -48,7 +48,7 @@ class ComparatorController extends AbstractController
         $form = $this->createForm(BikeSearchType::class, $search);
         $form->handleRequest($request);
         $property = $paginator->paginate(
-            $this->repository->findAllVisibleQuery($search),
+            $this->repository->findAll(),
             $request->query->getInt('page', 1),
             12
         );

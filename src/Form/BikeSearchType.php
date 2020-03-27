@@ -26,7 +26,7 @@ class BikeSearchType extends AbstractType
             ->add('MinPrice',MoneyType::class, [
                 'required'   => false,
             ])
-            ->add('FrameSize', ChoiceType::class, [
+            /*->add('FrameSize', ChoiceType::class, [
                 'choices'  => [
                     'tout' => null,
                     '50' => null,
@@ -55,7 +55,7 @@ class BikeSearchType extends AbstractType
                 'multiple' => true,
 
 
-            ])
+            ])*/
 
 
         ;
