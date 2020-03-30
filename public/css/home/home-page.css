@@ -1,0 +1,71 @@
+
+
+
+/* STYLE HOME PAGE */
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300&display=swap');
+
+:root {
+    --color-banner: #808080;
+
+    --bg-content-article-1: #556a80;
+    --bg-content-article-2: #dee2e6;
+    --bg-content-article-3: #535353;
+}
+
+.home-wrapper {
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+/* HEADER */
+.container-header {
+    height: 300px;
+}
+
+.container-header__content {
+    text-transform: uppercase;
+    letter-spacing: 0.6em;
+}
+
+.container-header__title {
+    font-size: 3em;
+}
+
+/* BANNER */
+.banner {
+    color: var(--color-banner);
+}
+
+.banner__title {
+    /* font-family: 'Lato', Calibri, Arial, sans-serif; */
+    font-size: 1.2em;
+    letter-spacing: 0.6em;
+}
+
+
+/* CONTENT ARTICLE */
+.content-article__article-1 {
+    background-color: var(--bg-content-article-1);
+}
+
+.content-article__article-2 {
+    background-color: var(--bg-content-article-2);
+}
+
+.content-article__article-3 {
+    background-color: var(--bg-content-article-3);
+}
+
+.content-article__article-4 {
+    background-color: var(--bg-content-article-2);
+}
+
+/* CONTENT ARTICLE TITLE */
+.content-article__title {
+    font-size: 3em;
+}
+
+/* CONTENT ARTICLE SECTION */
+.content-article__section {
+    font-size: 1.2em;
+}
