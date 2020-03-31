@@ -1,33 +1,23 @@
+
+
+/* STYLE COMMUN */
+
+
+:root {
+    --bg-page:#f5f5fa;
+    --color-checkbox:#0000;
+}
+
 body {
     font-family: 'Lato', Calibri, Arial, sans-serif;
-    font-weight: 400;
+    background-color: var(--bg-page);
 }
 
-#containerPage {
-    background-color: #f5f5fa;
+/* STYLES CHECKBOX */
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: var(--color-checkbox) !important;
 }
 
-.titelMenuOption {
-    text-transform: uppercase;
-    letter-spacing: .9rem;
-    font-size: 1.3em;
-    color: rgb(128, 128, 128);
-    /* font-family: 'Lato', Calibri, Arial, sans-serif; */
-    font-family: "Source Sans Pro", sans-serif;
-
-}
-
-/* select du nav tri */
-
-.select-sorting,
-.badge-sorting {
-
-    height: 28px !important;
-    margin-top: 7px
-}
-
-.badge-trie {
-    /* border-radius: 20px !important; */
-    font-size: 12px !important;
-    font-family: inherit !important;
+label.custom-control-label {
+    margin-top: 0.15rem;
 }

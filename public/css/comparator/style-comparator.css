@@ -1,19 +1,27 @@
+
+
+/* STYLE PAGE COMPARATOR */
+
+
+:root {
+    --bg-page:#f5f5fa;
+    --color-title-option:rgb(128, 128, 128);
+}
+
 .prix,
 .tprix {
     cursor: pointer;
 }
 
-.body__content-container {
-    background-color: #f5f5fa;
+#ontainerPage {
+    background-color: var(--bg-page);
 }
 
 .titelMenuOption {
     text-transform: uppercase;
     letter-spacing: .9rem;
-    color: rgb(128, 128, 128);
-    /* font-family: 'Lato', Calibri, Arial, sans-serif; */
-    font-family: "Source Sans Pro", sans-serif;
-
+    color: var(--color-title-option);
+    font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
 /* conteneur du menu de trie */
@@ -30,3 +38,4 @@
     font-size: 12px !important;
     font-family: inherit !important;
 }
+
