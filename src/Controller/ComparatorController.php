@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 
+use App\Entity\Bike;
 use App\Entity\BikeSearch;
 use App\Form\BikeSearchType;
 
@@ -60,6 +61,29 @@ class ComparatorController extends AbstractController
 
         ]);
     }
+
+    /**
+     * @Route("/comparator/{slug}.{id}", name="bike.show", requirements={"slug": "[a-z0-9\-]*"})
+     * @param Bike $property
+     * @param string $slug
+     * @param $id
+     * @return Response
+     */
+    public function show(Bike $property,string $slug, $id):response{
+        /* if ($property->getSlug()  !== $slug){
+             return  $this->redirectToRoute('property.show',[
+                 'id' =>$property->getId(),
+                 'slug' =>$property->getSlug(),
+             ],301);
+         }*/
+
+        return $this->render('comparator/show.html.twig', [
+            'property' => $property,
+            'current_menu' => 'properties'
+        ]);
+    }
+
+
 }
 
 
