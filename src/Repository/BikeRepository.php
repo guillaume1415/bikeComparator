@@ -29,8 +29,7 @@ class BikeRepository extends ServiceEntityRepository
 
           $query = $this
               ->findVisibleQuery()
-                //->select('m','p')
-                //->join('p.mark', 'm')
+
              ;
 
             if($search->getMaxPrice()){
@@ -45,13 +44,13 @@ class BikeRepository extends ServiceEntityRepository
         }
 
 
-       /* if(!empty($search->getMarke()) ){
+        if(!empty($search->getMarke()) ){
             $query = $query
 
-                ->andWhere('m.id IN (:Marke')
-                ->setParameter('Marke',$search->getMarke())
+                ->andWhere('m.id IN (:Mark)')
+                ->setParameter('Mark',$search->getMarke())
             ;
-        }*/
+        }
 
 
         return $query->getQuery();
@@ -60,7 +59,8 @@ class BikeRepository extends ServiceEntityRepository
     public function findVisibleQuery():QueryBuilder
     {
         return $this->createQueryBuilder('p')
-
+            ->select('m','p')
+            ->join('p.mark', 'm')
             ->where('p.exist = 1');
 
     }
