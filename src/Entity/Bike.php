@@ -167,11 +167,4 @@ class Bike
         return $this;
     }
 
-
-
-
-
-
-
-
 }
