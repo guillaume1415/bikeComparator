@@ -50,6 +50,7 @@ class ComparatorController extends AbstractController
         $form->handleRequest($request);
         $property = $paginator->paginate(
             $this->repository->findAllVisibleQuery($search),
+            //$this->repository->findLastest(),
             $request->query->getInt('page', 1),
             12
         );
