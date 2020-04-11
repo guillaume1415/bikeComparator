@@ -4,9 +4,12 @@ namespace App\Controller;
 
 
 
+use App\Data\SearchData;
 use App\Entity\BikeSearch;
 use App\Form\BikeSearchType;
 
+
+use App\Form\SearchForm;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\BikeRepository;
 
@@ -19,42 +22,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class ComparatorController extends AbstractController
 {
 
-    /**
-     * @var BikeRepository
-     */
-    private $repository;
-    /**
-     * @var EntityManagerInterface
-     */
-    private $manager;
 
-    public function __construct(BikeRepository $repository, EntityManagerInterface $manager)
-    {
-        $this->repository = $repository;
-        $this->manager = $manager;
-
-    }
 
 
     /**
      * @Route("/comparator", name="comparator")
-     * @param PaginatorInterface $paginator
+     * @param BikeRepository $repository
      * @param Request $request
      * @return Response
      */
-    public function index( PaginatorInterface $paginator,Request $request)
+    public function index( BikeRepository $repository,Request $request)
     {
-        $search = new BikeSearch();
-        $form = $this->createForm(BikeSearchType::class, $search);
+        $data = new SearchData();
+        $data->page = $request->get('page', 1);
+        $form = $this->createForm(SearchForm::class, $data);
         $form->handleRequest($request);
-        $property = $paginator->paginate(
-            $this->repository->findAllVisibleQuery($search),
-            $request->query->getInt('page', 1),
-            12
-        );
-
+        $property = $repository->findAllVisibleQuery($data);
         return $this->render('comparator/index.html.twig', [
-            'current_menu' => 'properties',
             'properties' => $property,
             'form' => $form->createView()
 
