@@ -65,6 +65,14 @@ class BikeSearchType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => BikeSearch::class,
+            'method' =>'GET',
+            'csrf_protection' => false
+
         ]);
+    }
+
+    public function getBlockPrefix()
+    {
+        return '';
     }
 }

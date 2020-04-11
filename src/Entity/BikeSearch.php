@@ -42,14 +42,14 @@ class BikeSearch
     private $ForkMaterial;
 
     /**
-     * @var ArrayCollection
+     * @var Marks[]
      */
-    private $Marke;
+    public $Marke = [];
 
-    public function __construct()
+   /* public function __construct()
     {
         $this->Marke = new ArrayCollection();
-    }
+    }*/
 
 
 
@@ -120,21 +120,22 @@ class BikeSearch
         return $this;
     }
 
-    /**
+
+     /**
      * @return ArrayCollection
      */
-    public function getMarke(): ArrayCollection
+   /* public function getMarke(): ArrayCollection
     {
         return $this->Marke;
-    }
+    }*/
 
     /**
      * @param ArrayCollection $Marke
      * @return BikeSearch
      */
-    public function setMarke(ArrayCollection $Marke): BikeSearch
+   /* public function setMarke(ArrayCollection $Marke): BikeSearch
     {
         $this->Marke = $Marke;
         return $this;
-    }
+    }*/
 }

@@ -57,15 +57,10 @@ class Marks
         return $this;
     }
 
-    /**
-     * @return Collection|Bike[]
-     */
 
 
-    public function __toString()
-    {
-        return $this->name;
-    }
+
+
 
     /**
      * @return Collection|Bike[]
@@ -98,6 +93,10 @@ class Marks
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
 
 
 
