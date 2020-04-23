@@ -29,8 +29,8 @@ class BikeRepository extends ServiceEntityRepository
 
           $query = $this
               ->findVisibleQuery()
-                //->select('m','p')
-                //->join('p.mark', 'm')
+                ->select('m','p')
+                ->join('p.mark', 'm')
              ;
 
             if($search->getMaxPrice()){
@@ -45,13 +45,13 @@ class BikeRepository extends ServiceEntityRepository
         }
 
 
-       /* if(!empty($search->getMarke()) ){
+        if(!empty($search->getMarke()) ){
             $query = $query
 
-                ->andWhere('m.id IN (:Marke')
+                ->andWhere('m.id IN (:Marke)')
                 ->setParameter('Marke',$search->getMarke())
             ;
-        }*/
+        }
 
 
         return $query->getQuery();
