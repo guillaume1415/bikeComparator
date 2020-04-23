@@ -67,7 +67,7 @@ class BikeRepository extends ServiceEntityRepository
 
     public function findLastest():array {
         return $this->findVisibleQuery()
-            ->setMaxResults(4)
+            ->setMaxResults(12)
             ->getQuery()
             ->getResult();
     }
