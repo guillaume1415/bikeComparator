@@ -17,6 +17,8 @@ class MarksController extends AbstractController
 {
     /**
      * @Route("/", name="marks_index", methods={"GET"})
+     * @param MarksRepository $marksRepository
+     * @return Response
      */
     public function index(MarksRepository $marksRepository): Response
     {
@@ -27,6 +29,8 @@ class MarksController extends AbstractController
 
     /**
      * @Route("/new", name="marks_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +54,8 @@ class MarksController extends AbstractController
 
     /**
      * @Route("/{id}", name="marks_show", methods={"GET"})
+     * @param Marks $mark
+     * @return Response
      */
     public function show(Marks $mark): Response
     {
@@ -60,6 +66,9 @@ class MarksController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="marks_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Marks $mark
+     * @return Response
      */
     public function edit(Request $request, Marks $mark): Response
     {
@@ -80,6 +89,9 @@ class MarksController extends AbstractController
 
     /**
      * @Route("/{id}", name="marks_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Marks $mark
+     * @return Response
      */
     public function delete(Request $request, Marks $mark): Response
     {

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200318153238 extends AbstractMigration
+final class Version20200423101731 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,8 @@ final class Version20200318153238 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE bike ADD marks_id INT DEFAULT NULL, CHANGE img img VARCHAR(255) DEFAULT NULL');
-        $this->addSql('ALTER TABLE bike ADD CONSTRAINT FK_4CBC37804B8FD494 FOREIGN KEY (marks_id) REFERENCES mark (id)');
-        $this->addSql('CREATE INDEX IDX_4CBC37804B8FD494 ON bike (marks_id)');
+        $this->addSql('CREATE TABLE bike (id INT AUTO_INCREMENT NOT NULL, price DOUBLE PRECISION NOT NULL, frame_size INT NOT NULL, frame_material VARCHAR(50) NOT NULL, fork_material VARCHAR(50) NOT NULL, title VARCHAR(255) NOT NULL, exist INT NOT NULL, img VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE marks (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +31,7 @@ final class Version20200318153238 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE bike DROP FOREIGN KEY FK_4CBC37804B8FD494');
-        $this->addSql('DROP INDEX IDX_4CBC37804B8FD494 ON bike');
-        $this->addSql('ALTER TABLE bike DROP marks_id, CHANGE img img VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT \'NULL\' COLLATE `utf8mb4_unicode_ci`');
+        $this->addSql('DROP TABLE bike');
+        $this->addSql('DROP TABLE marks');
     }
 }

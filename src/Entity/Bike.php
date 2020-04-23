@@ -60,6 +60,12 @@ class Bike
     private $mark;
 
 
+
+
+
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,16 +161,22 @@ class Bike
         return $this;
     }
 
-    public function getMark(): ?Marks
+    public function getMark(): ?marks
     {
         return $this->mark;
     }
 
-    public function setMark(?Marks $mark): self
+    public function setMark(?marks $mark): self
     {
         $this->mark = $mark;
 
         return $this;
     }
+
+
+
+
+
+
 
 }

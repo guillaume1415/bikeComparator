@@ -42,9 +42,9 @@ class BikeSearch
     private $ForkMaterial;
 
     /**
-     * @var $Marke[]
+     * @var $ArrayCollection
      */
-    public $Marke = [];
+    private $Marke;
 
     public function __construct()
     {
