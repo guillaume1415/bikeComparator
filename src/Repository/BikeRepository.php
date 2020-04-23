@@ -45,12 +45,13 @@ class BikeRepository extends ServiceEntityRepository
         }
 
 
-        if($search->getMarke()){
+        /*if(!empty($search->getMarke()) ){
             $query = $query
+
                 ->andWhere('m.id IN (:Marke)')
                 ->setParameter('Marke',$search->getMarke())
             ;
-        }
+        }*/
 
 
         return $query->getQuery();
