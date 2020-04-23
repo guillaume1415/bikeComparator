@@ -6,7 +6,7 @@
             <a class="cbp-vm-image card-img-top " href="#"><img src="{{ asset('img/Ross.jpg') }}" alt=""></a>
 
            <h3><a href="{{ path('bike.show', {id: property.id, slug: property.slug}) }}">{{ property.title }}</a></h3>
-
+            <h4>{{ property.mark }}</h4>
 
             <div class="cbp-vm-details card-text ">
                 Silver beet shallot wakame tomatillo salsify mung bean beetroot groundnut. <br>
@@ -15,6 +15,7 @@
             <div class="custom-control custom-checkbox">
                 <input id="{{ property.id }}"  class="custom-control-input" type="checkbox" name="bike">
                 <label for="{{ property.id }}" class="custom-control-label" ><span>Ajouter pour comparer</span></label>
+
             </div>
 
             <div class="cbp-vm-price">{{ property.price }} €</div>

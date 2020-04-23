@@ -4,14 +4,12 @@ namespace App\Repository;
 
 use App\Entity\Bike;
 use App\Entity\Marks;
-//use App\Entity\BikeSearch;
-use App\Data\SearchData;
+use App\Entity\BikeSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 
-use Knp\Component\Pager\PaginatorInterface;
-use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
  * @method Bike|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,50 +19,59 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
  */
 class BikeRepository extends ServiceEntityRepository
 {
-    /**
-     * @return PaginatorInterface
-     */
-    private $paginator;
-
-    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Bike::class);
-        $this->paginator = $paginator;
     }
 
-    /**
-     * @param SearchData $search
-     * @return PaginationInterface
-     */
-    public function findAllVisibleQuery(SearchData $search):paginationInterface
-    {
-            $query = $this
-              ->createQueryBuilder('p')
-             // ->findVisibleQuery()
-            ->select('c','p')
-            ->join('p.mark', 'c');
-            if(!empty($search->max)){
+    public function findAllVisibleQuery(BikeSearch $search):Query {
+
+
+          $query = $this
+              ->findVisibleQuery()
+                ->select('m','p')
+                ->join('p.mark', 'm')
+             ;
+
+            if($search->getMaxPrice()){
             $query = $query
                 ->andWhere('p.price < :maxprice')
-                ->setParameter('maxprice',$search->max);
-            }
-            if(!empty($search->min)){
-                $query = $query
-                    ->andWhere('p.price >= :minprice')
-                    ->setParameter('minprice',$search->min);
-            }
-            if(!empty($search->marke)){
-                $query = $query
-                    ->andWhere('c.id IN (:categories)')
-                    ->setParameter('categories', $search->marke);
-            }
-        $query =  $query->getQuery();
-            return $this->paginator->paginate(
-                $query,
-                $search->page ,
-                12
-            );
+                ->setParameter('maxprice',$search->getMaxPrice());
+        }
+        if($search->getMinPrice()){
+            $query = $query
+                ->andWhere('p.price >= :minprice')
+                ->setParameter('minprice',$search->getMinPrice());
+        }
+
+
+        if(!empty($search->getMarke()) ){
+            $query = $query
+
+                ->andWhere('m.id IN (:Marke)')
+                ->setParameter('Marke',$search->getMarke())
+            ;
+        }
+
+
+        return $query->getQuery();
     }
+
+    public function findVisibleQuery():QueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+
+            ->where('p.exist = 1');
+
+    }
+
+    public function findLastest():array {
+        return $this->findVisibleQuery()
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+    }
+
 
 
     // /**
