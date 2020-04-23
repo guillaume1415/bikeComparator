@@ -29,8 +29,8 @@ class BikeRepository extends ServiceEntityRepository
 
           $query = $this
               ->findVisibleQuery()
-                ->select('m','p')
-                ->join('p.mark', 'm')
+               // ->select('m','p')
+                //->join('p.mark', 'm')
              ;
 
             if($search->getMaxPrice()){
