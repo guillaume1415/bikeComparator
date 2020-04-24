@@ -4,10 +4,11 @@ namespace App\Controller;
 
 
 
+use App\Data\SearchData;
 use App\Entity\Bike;
-use App\Entity\BikeSearch;
-use App\Form\BikeSearchType;
 
+
+use App\Form\SearchForm;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\BikeRepository;
 
@@ -45,8 +46,8 @@ class ComparatorController extends AbstractController
      */
     public function index( PaginatorInterface $paginator,Request $request)
     {
-        $search = new BikeSearch();
-        $form = $this->createForm(BikeSearchType::class, $search);
+        $search = new SearchData();
+        $form = $this->createForm(SearchForm::class, $search);
         $form->handleRequest($request);
         $property = $paginator->paginate(
             $this->repository->findAllVisibleQuery($search),

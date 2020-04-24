@@ -2,9 +2,9 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\Bike;
-use App\Entity\Marks;
-use App\Entity\BikeSearch;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
@@ -24,34 +24,34 @@ class BikeRepository extends ServiceEntityRepository
         parent::__construct($registry, Bike::class);
     }
 
-    public function findAllVisibleQuery(BikeSearch $search):Query {
+    public function findAllVisibleQuery(SearchData $search):Query {
 
 
           $query = $this
               ->findVisibleQuery()
-               // ->select('m','p')
-                //->join('p.mark', 'm')
+                ->select('m','p')
+                ->join('p.mark', 'm')
              ;
 
-            if($search->getMaxPrice()){
+            if($search->max){
             $query = $query
                 ->andWhere('p.price < :maxprice')
-                ->setParameter('maxprice',$search->getMaxPrice());
+                ->setParameter('maxprice',$search->max);
         }
-        if($search->getMinPrice()){
+        if($search->min){
             $query = $query
                 ->andWhere('p.price >= :minprice')
-                ->setParameter('minprice',$search->getMinPrice());
+                ->setParameter('minprice',$search->min);
         }
 
 
-        /*if(!empty($search->getMarke()) ){
+        if(!empty($search->marke) ){
             $query = $query
 
                 ->andWhere('m.id IN (:Marke)')
-                ->setParameter('Marke',$search->getMarke())
+                ->setParameter('Marke',$search->marke)
             ;
-        }*/
+        }
 
 
         return $query->getQuery();
