@@ -28,9 +28,15 @@ class Marks
      */
     private $bikes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Test", mappedBy="marks")
+     */
+    private $tests;
+
     public function __construct()
     {
         $this->bikes = new ArrayCollection();
+        $this->tests = new ArrayCollection();
     }
 
 
@@ -99,6 +105,37 @@ class Marks
             // set the owning side to null (unless already changed)
             if ($bike->getMark() === $this) {
                 $bike->setMark(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Test[]
+     */
+    public function getTests(): Collection
+    {
+        return $this->tests;
+    }
+
+    public function addTest(Test $test): self
+    {
+        if (!$this->tests->contains($test)) {
+            $this->tests[] = $test;
+            $test->setMarks($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTest(Test $test): self
+    {
+        if ($this->tests->contains($test)) {
+            $this->tests->removeElement($test);
+            // set the owning side to null (unless already changed)
+            if ($test->getMarks() === $this) {
+                $test->setMarks(null);
             }
         }
 

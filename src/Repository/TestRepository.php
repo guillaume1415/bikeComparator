@@ -4,20 +4,19 @@ namespace App\Repository;
 
 use App\Data\SearchData;
 use App\Entity\Bike;
-
+use App\Entity\Test;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 
-
 /**
- * @method Bike|null find($id, $lockMode = null, $lockVersion = null)
- * @method Bike|null findOneBy(array $criteria, array $orderBy = null)
- * @method Bike[]    findAll()
- * @method Bike[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Test|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Test|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Test[]    findAll()
+ * @method Test[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class BikeRepository extends ServiceEntityRepository
+class TestRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -26,14 +25,13 @@ class BikeRepository extends ServiceEntityRepository
 
     public function findAllVisibleQuery(SearchData $search):Query {
 
+        $query = $this
+            ->findVisibleQuery()
+            ->select('m','p')
+            ->join('p.mark', 'm')
+        ;
 
-          $query = $this
-              ->findVisibleQuery()
-                ->select('m','p')
-                ->join('p.mark', 'm')
-             ;
-
-            if($search->max){
+        if($search->max){
             $query = $query
                 ->andWhere('p.price < :maxprice')
                 ->setParameter('maxprice',$search->max);
@@ -44,7 +42,6 @@ class BikeRepository extends ServiceEntityRepository
                 ->setParameter('minp rice',$search->min);
         }
 
-
         if(!empty($search->marke) ){
             $query = $query
 
@@ -52,7 +49,6 @@ class BikeRepository extends ServiceEntityRepository
                 ->setParameter('Marke',$search->marke)
             ;
         }
-
 
         return $query->getQuery();
     }
@@ -71,35 +67,4 @@ class BikeRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
-
-
-    // /**
-    //  * @return Bike[] Returns an array of Bike objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Bike
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
